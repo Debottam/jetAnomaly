@@ -11,7 +11,7 @@ from keras.models import Model
 from keras.layers import Input, Dense, Dropout
 from keras.utils import plot_model
 from preprocessing import preprocessing 
-f=h5py.File('/home/zp/gupta/jetAnomaly/utils/QCD_all.h5','r')
+f=h5py.File('/lcg/storage13/atlas/gupta/stealth_boson/Inter_Zp2200_S80A15.h5','r')
 data=f['table']
 data_preprocessed=[]
 for i in range(len(data)):
@@ -19,7 +19,7 @@ for i in range(len(data)):
         print(i)
     data_preprocessed.append(preprocessing(data[i]))
 data_preprocessed=np.vstack(data_preprocessed)
-data_out=h5py.File('/home/zp/gupta/jetAnomaly/utils/QCD_all_preprocessed.h5', 'w')
+data_out=h5py.File('/lcg/storage13/atlas/gupta/stealth_boson/Inter_Zp2200_S80A15_preprocessed.h5', 'w')
 dset=data_out.create_dataset('table', data=data_preprocessed)
 data_out.close()
 f.close()
